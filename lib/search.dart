@@ -4,9 +4,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 class Search extends SearchDelegate{
 
   final List conutryList;
-
   Search(this.conutryList);
 
+  @override
+  String get searchFieldLabel => 'Type country name here';
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -34,7 +35,7 @@ class Search extends SearchDelegate{
   Widget buildSuggestions(BuildContext context) {
 
     final suggestionList = query.isEmpty? conutryList
-    : conutryList.where((element) => element['country'].toString().toLowerCase().startsWith(query)).toList();
+    : conutryList.where((element) => element['country'].toString().startsWith(query)).toList();
 
     return ListView.builder(
       itemCount: suggestionList.length,

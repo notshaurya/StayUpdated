@@ -48,13 +48,13 @@ class _CovidPageState extends State<CovidPage> {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
       onPressed: () {
+        
         showSearch(context: context, delegate: Search(allCountryList));
       },
           icon: Icon(FontAwesomeIcons.search),
           label: Text("SEARCH",  style: TextStyle(fontWeight: FontWeight.bold),),
         
       backgroundColor: Colors.green,
-      //shape: RoundedRectangleBorder(),
     ),
       appBar: AppBar(
         title: Text("COVID - 19 TRACKER",style: TextStyle(fontFamily: 'ChelseaMarket'),),
@@ -176,7 +176,7 @@ class _CovidPageState extends State<CovidPage> {
                 children: <Widget>[
                   Image(
                     fit: BoxFit.fill,
-                    height: 150,
+                    height: 130,
                     width: 300,
                     image: AssetImage('assets/indiaflag.jpg')),
                   Text("WE ARE TOGETHER",
@@ -209,8 +209,6 @@ class StatusPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black,
-      padding: EdgeInsets.all(0.1),
       child: Card(
         elevation: 10,
             shape: RoundedRectangleBorder(
