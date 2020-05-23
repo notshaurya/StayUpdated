@@ -110,9 +110,9 @@ class MainNewsCard extends StatelessWidget {
                   child: 
                   CachedNetworkImage(imageUrl: imageUrl)),
                 SizedBox(height: 15),
-                Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black)),
+                Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black)),
                 SizedBox(height: 10),
-                Text(desc, style: TextStyle(fontSize: 17, color: Colors.black))
+                Text(desc, style: TextStyle(fontSize: 15, color: Colors.black))
               ]
             ),
           ),

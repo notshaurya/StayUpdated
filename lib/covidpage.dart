@@ -73,7 +73,7 @@ class _CovidPageState extends State<CovidPage> {
                 child: Text("Human kindness has never weakened the stamina or softened the fibre of free people. A nation does not have to be cruel to be tough.",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                      fontSize: 18,
                       ),
                       ),
               ),
@@ -224,8 +224,8 @@ class StatusPanel extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(title, style: TextStyle(color: textColor, fontWeight: FontWeight.bold, fontSize: 20),),
-              Text(count, style: TextStyle(color: textColor, fontWeight: FontWeight.bold, fontSize: 24),),
+              Text(title, style: TextStyle(color: textColor, fontWeight: FontWeight.bold, fontSize: 18),),
+              Text(count, style: TextStyle(color: textColor, fontWeight: FontWeight.bold, fontSize: 20),),
             ],
           ),
         ),
