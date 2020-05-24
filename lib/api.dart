@@ -13,9 +13,6 @@ class MainNewsModel {
 
 }
 
-
-
-
 class MainNews {
 
   List mainnewslist = [];

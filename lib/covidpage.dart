@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:NEW_APP/search.dart';
+import 'package:NEW_APP/searchpage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -170,23 +170,13 @@ class _CovidPageState extends State<CovidPage> {
             MoreInfo(),
             SizedBox(height: 40),
             Container(
-              color: Colors.black,
               padding: EdgeInsets.all(5),
-              child: Stack(alignment: Alignment.center,
-                children: <Widget>[
-                  Image(
-                    fit: BoxFit.fill,
-                    height: 130,
-                    width: 300,
-                    image: AssetImage('assets/indiaflag.jpg')),
-                  Text("WE ARE TOGETHER",
-                  style: TextStyle(fontSize: 30,
-                   fontFamily: 'ChelseaMaket', 
-                   fontWeight: FontWeight.bold, 
-                   color: Colors.purple[700]),
-                   ),
-                ], 
-              ),
+              child: Text("WE ARE TOGETHER",
+              style: TextStyle(fontSize: 25,
+               fontFamily: 'ChelseaMaket', 
+               fontWeight: FontWeight.bold, 
+               color: Colors.purple[700]),
+               ),
             ), 
             SizedBox(height: 70),
         ],

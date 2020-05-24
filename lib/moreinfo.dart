@@ -47,7 +47,7 @@ class MoreInfo extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    "DONATE (INDIA PM CARE'S FUND)",
+                    "DONATE (INDIA PM CARES FUND)",
                     style: TextStyle(
                       fontFamily: 'ChelseaMarket',
                         color: Colors.white,

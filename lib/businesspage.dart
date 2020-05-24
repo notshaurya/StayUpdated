@@ -1,18 +1,21 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'dart:async';
+import 'package:NEW_APP/webview.dart';
 import 'package:flutter/material.dart';
-import 'package:NEW_APP/api.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 //import 'package:url_launcher/url_launcher.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:NEW_APP/drawer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:NEW_APP/covidpage.dart';
-import 'package:NEW_APP/drawer.dart';
-import 'package:NEW_APP/webview.dart';
 
-class Homepage extends StatefulWidget {
+
+class Businesspage extends StatefulWidget {
   @override
-  _HomepageState createState() => _HomepageState();
+  _BusinesspageState createState() => _BusinesspageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _BusinesspageState extends State<Businesspage> {
 
   List mainnews = List();
   bool _loading = true;
@@ -35,14 +38,11 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+      child: SideDrawer(),
+    ),
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-          Text("Stay",style: TextStyle(fontSize: 20, fontFamily: 'ChelseaMarket',fontWeight: FontWeight.bold)),
-          Text("Updated",style: TextStyle(fontSize: 25,fontFamily: 'ChelseaMarket', color: Colors.yellow, fontWeight: FontWeight.bold))
-        ],
-        ),
+        title: Text("Business News",style: TextStyle(fontSize: 20, fontFamily: 'ChelseaMarket',fontWeight: FontWeight.bold)),
       ),
       body: _loading ? Center(
         child: CircularProgressIndicator()
@@ -75,9 +75,6 @@ class _HomepageState extends State<Homepage> {
         
       backgroundColor: Colors.green,
     ),
-    drawer: Drawer(
-      child: SideDrawer(),
-    ),
     );
   }
 }
@@ -88,12 +85,14 @@ class MainNewsCard extends StatelessWidget {
   final String title, desc, url, imageUrl, author;
   MainNewsCard({this.desc, this.imageUrl, this.title, this.url, this.author});
 
+  
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(onTap: () {
       Navigator.push(context, MaterialPageRoute(
         builder: (context) => Webview(
-          url: url
+          url: url,
       )));
       //launch(url);
     },
@@ -123,4 +122,55 @@ class MainNewsCard extends StatelessWidget {
       ),
     );
   }
+}
+
+
+
+
+
+// API for current category..
+
+
+
+class MainNewsModel {
+
+  String title;
+  String description;
+  String url;
+  String urlToImage;
+  String author;
+
+  MainNewsModel({this.title, this.description, this.url, this.urlToImage, this.author});
+
+}
+
+class MainNews {
+
+  List mainnewslist = [];
+
+  Future<void> mainNews() async {
+
+  String url = "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=3d0174f321ba406daf5daa0f48d5c724";
+  
+  var response = await http.get(url);
+  
+  var jsonData = jsonDecode(response.body);
+  
+  if (jsonData['status'] == "ok") {
+    jsonData['articles'].forEach((item){
+      if(item['urlToImage'] != null && item['description'] != null) {
+        var mainNewsModel = MainNewsModel(
+          title: item['title'],
+          description: item['description'],
+          url: item['url'],
+          urlToImage: item['urlToImage'],
+          author: item['author']
+        );
+
+        mainnewslist.add(mainNewsModel);
+
+      }
+    });
+  }
+}
 }
