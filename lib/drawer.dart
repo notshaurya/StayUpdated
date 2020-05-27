@@ -1,14 +1,14 @@
 
-import 'package:NEW_APP/businesspage.dart';
+import 'package:new_app/businesspage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-//import 'package:NEW_APP/homepage.dart';
-import 'package:NEW_APP/entertainmentpage.dart';
-import 'package:NEW_APP/healthpage.dart';
-import 'package:NEW_APP/sportspage.dart';
-import 'package:NEW_APP/sciencepage.dart';
-import 'package:NEW_APP/technologypage.dart';
-import 'package:NEW_APP/homepage.dart';
+//import 'package:new_app/homepage.dart';
+import 'package:new_app/entertainmentpage.dart';
+import 'package:new_app/healthpage.dart';
+import 'package:new_app/sportspage.dart';
+import 'package:new_app/sciencepage.dart';
+import 'package:new_app/technologypage.dart';
+import 'package:new_app/homepage.dart';
 
 class SideDrawer extends StatelessWidget {
   @override

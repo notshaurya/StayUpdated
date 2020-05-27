@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 //import 'package:url_launcher/url_launcher.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:NEW_APP/webview.dart';
-import 'package:NEW_APP/drawer.dart';
+import 'package:new_app/webview.dart';
+import 'package:new_app/drawer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:NEW_APP/covidpage.dart';
+import 'package:new_app/covidpage.dart';
 
 
 class Technologypage extends StatefulWidget {

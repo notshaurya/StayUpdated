@@ -1,9 +1,9 @@
 import 'dart:convert';
-import 'package:NEW_APP/searchpage.dart';
+import 'package:new_app/searchpage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:NEW_APP/moreinfo.dart';
+import 'package:new_app/moreinfo.dart';
 
 
 
@@ -52,7 +52,7 @@ class _CovidPageState extends State<CovidPage> {
         showSearch(context: context, delegate: Search(allCountryList));
       },
           icon: Icon(FontAwesomeIcons.search),
-          label: Text("SEARCH",  style: TextStyle(fontWeight: FontWeight.bold),),
+          label: Text(" SEARCH",  style: TextStyle(fontWeight: FontWeight.bold),),
         
       backgroundColor: Colors.green,
     ),

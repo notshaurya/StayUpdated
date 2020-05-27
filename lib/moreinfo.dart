@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:NEW_APP/faq.dart';
+import 'package:new_app/faq.dart';
 
 class MoreInfo extends StatelessWidget {
   @override

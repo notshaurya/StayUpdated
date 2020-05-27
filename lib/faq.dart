@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-      import 'package:NEW_APP/drawer.dart';
+      import 'package:new_app/drawer.dart';
 
 class FAQPage extends StatelessWidget {
   @override
