@@ -46,7 +46,8 @@ class _CovidPageState extends State<CovidPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
+      floatingActionButton: indiaStats==null ? Container()
+       : FloatingActionButton.extended(
       onPressed: () {
         
         showSearch(context: context, delegate: Search(allCountryList));

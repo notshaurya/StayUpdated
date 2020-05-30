@@ -33,7 +33,7 @@ class SideDrawer extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height:70),
+        //SizedBox(height:70),
         ListTile(
           leading: Icon(FontAwesomeIcons.lightbulb, color: Colors.green,),
           title: Text('General', style: TextStyle(
