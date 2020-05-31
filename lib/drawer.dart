@@ -22,14 +22,21 @@ class SideDrawer extends StatelessWidget {
             color: Colors.green,
           ),
           child: Center(
-            child: Text(
-              'Category News',
-              style: TextStyle(
-                fontFamily: 'ChelseaMarket',
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-                fontSize: 24,
-              ),
+            child: Column(
+              children: <Widget>[
+                Image(image: AssetImage('assets/stayupdated.png'),
+                height: 100,
+                ),
+                Text(
+                  'Category News',
+                  style: TextStyle(
+                    fontFamily: 'ChelseaMarket',
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                ),
+              ],
             ),
           ),
         ),
@@ -121,5 +128,8 @@ class SideDrawer extends StatelessWidget {
       
     );
   }
+}
+
+class AssestImage {
 }
 
