@@ -42,8 +42,8 @@ class SideDrawer extends StatelessWidget {
         ),
         //SizedBox(height:70),
         ListTile(
-          leading: Icon(FontAwesomeIcons.lightbulb, color: Colors.green,),
-          title: Text('General', style: TextStyle(
+          leading: Icon(FontAwesomeIcons.newspaper,color: Colors.green,),
+          title: Text('Top Headlines', style: TextStyle(
             fontSize: 17,
           ),),
           onTap: () {
