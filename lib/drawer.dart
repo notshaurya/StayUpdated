@@ -130,6 +130,5 @@ class SideDrawer extends StatelessWidget {
   }
 }
 
-class AssestImage {
-}
+
 

@@ -6,6 +6,7 @@ import 'package:new_app/drawer.dart';
 class Webview extends StatefulWidget {
   
   final String url;
+
   Webview({this.url});
   
   @override
@@ -45,3 +46,4 @@ class _WebviewState extends State<Webview> {
   }
 
 }
+
