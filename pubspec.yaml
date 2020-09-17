@@ -3,7 +3,7 @@ description: A flutter news app with covid-19 information in it.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -28,7 +28,7 @@ dependencies:
   url_launcher: ^5.4.10
   font_awesome_flutter: ^8.8.1
   webview_flutter: ^0.3.22+1
-  
+  share: ^0.6.5
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -55,7 +55,7 @@ flutter_launcher_name:
 flutter:
   uses-material-design: true
   assets:
-  - assets/
+    - assets/
   #  - assets/entertainment.jpg
   #  - assets/health.jpg
   #  - assets/science.jpg
@@ -78,7 +78,7 @@ flutter:
       fonts:
         - asset: fonts/ChelseaMarket-Regular.ttf
         #- asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+    #         style: italic
     - family: Circular
       fonts:
         - asset: fonts/CircularAir-Light.ttf

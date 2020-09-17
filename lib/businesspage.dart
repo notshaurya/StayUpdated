@@ -8,7 +8,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:new_app/drawer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:new_app/covidpage.dart';
-
+import 'package:share/share.dart';
 
 class Businesspage extends StatefulWidget {
   @override
@@ -16,7 +16,6 @@ class Businesspage extends StatefulWidget {
 }
 
 class _BusinesspageState extends State<Businesspage> {
-
   List mainnews = List();
   bool _loading = true;
 
@@ -39,84 +38,104 @@ class _BusinesspageState extends State<Businesspage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-      child: SideDrawer(),
-    ),
+        child: SideDrawer(),
+      ),
       appBar: AppBar(
-        title: Text("Business News",style: TextStyle(fontSize: 20, fontFamily: 'ChelseaMarket',fontWeight: FontWeight.bold)),
+        title: Text("Business News",
+            style: TextStyle(
+                fontSize: 20,
+                fontFamily: 'ChelseaMarket',
+                fontWeight: FontWeight.bold)),
       ),
-      body: _loading ? Center(
-        child: CircularProgressIndicator()
-        ) 
-        : Container(
-        color: Colors.white,
-        padding: EdgeInsets.all(5),
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: mainnews.length,
-          itemBuilder: (context, index){
-            return MainNewsCard(
-              title: mainnews[index].title,
-              desc: mainnews[index].description,
-              url: mainnews[index].url,
-              imageUrl: mainnews[index].urlToImage,
-              author: mainnews[index].author
-          );
-        }, 
-      ),
-      ),
+      body: _loading
+          ? Center(child: CircularProgressIndicator())
+          : Container(
+              color: Colors.white,
+              padding: EdgeInsets.all(5),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: mainnews.length,
+                itemBuilder: (context, index) {
+                  return MainNewsCard(
+                      title: mainnews[index].title,
+                      desc: mainnews[index].description,
+                      url: mainnews[index].url,
+                      imageUrl: mainnews[index].urlToImage,
+                      author: mainnews[index].author);
+                },
+              ),
+            ),
       floatingActionButton: FloatingActionButton.extended(
-      onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => CovidPage(),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CovidPage(),
+            ),
+          );
+        },
+        icon: Icon(FontAwesomeIcons.procedures),
+        label: Text(
+          "COVID STATS",
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        );
-      },
-          icon: Icon(FontAwesomeIcons.procedures),
-          label: Text("COVID STATS",  style: TextStyle(fontWeight: FontWeight.bold),),
-        
-      backgroundColor: Colors.green,
-    ),
+        backgroundColor: Colors.green,
+      ),
     );
   }
 }
 
-
 class MainNewsCard extends StatelessWidget {
-
   final String title, desc, url, imageUrl, author;
   MainNewsCard({this.desc, this.imageUrl, this.title, this.url, this.author});
 
-  
-
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(onTap: () {
-      Navigator.push(context, MaterialPageRoute(
-        builder: (context) => Webview(
-          url: url,
-      )));
-      //launch(url);
-    },
-          child: Center(
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => Webview(url: url)));
+        //launch(url);
+      },
+      child: Center(
         child: Card(
-          elevation: 10,
+          elevation: 2,
           shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(100),
+            borderRadius: BorderRadius.circular(100),
           ),
           child: Container(
             color: Colors.white,
-            padding: EdgeInsets.all(15),
+            padding: EdgeInsets.all(7),
             child: Column(
-              children: <Widget>[
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: 
-                  CachedNetworkImage(imageUrl: imageUrl)),
-                SizedBox(height: 15),
-                Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black)),
-                SizedBox(height: 10),
-                Text(desc, style: TextStyle(fontSize: 15, color: Colors.black))
-              ]
-            ),
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: CachedNetworkImage(imageUrl: imageUrl)),
+                  SizedBox(height: 10),
+                  Text(title,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Colors.black)),
+                  SizedBox(height: 7),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Text(desc,
+                            style:
+                                TextStyle(fontSize: 15, color: Colors.black)),
+                      ),
+                      IconButton(
+                        icon: Icon(FontAwesomeIcons.shareAlt),
+                        onPressed: () {
+                          Share.share(title);
+                        },
+                      )
+                    ],
+                  ),
+                ]),
           ),
         ),
       ),
@@ -124,53 +143,43 @@ class MainNewsCard extends StatelessWidget {
   }
 }
 
-
-
-
-
 // API for current category..
 
-
-
 class MainNewsModel {
-
   String title;
   String description;
   String url;
   String urlToImage;
   String author;
 
-  MainNewsModel({this.title, this.description, this.url, this.urlToImage, this.author});
-
+  MainNewsModel(
+      {this.title, this.description, this.url, this.urlToImage, this.author});
 }
 
 class MainNews {
-
   List mainnewslist = [];
 
   Future<void> mainNews() async {
+    String url =
+        "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=3d0174f321ba406daf5daa0f48d5c724";
 
-  String url = "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=3d0174f321ba406daf5daa0f48d5c724";
-  
-  var response = await http.get(url);
-  
-  var jsonData = jsonDecode(response.body);
-  
-  if (jsonData['status'] == "ok") {
-    jsonData['articles'].forEach((item){
-      if(item['urlToImage'] != null && item['description'] != null) {
-        var mainNewsModel = MainNewsModel(
-          title: item['title'],
-          description: item['description'],
-          url: item['url'],
-          urlToImage: item['urlToImage'],
-          author: item['author']
-        );
+    var response = await http.get(url);
 
-        mainnewslist.add(mainNewsModel);
+    var jsonData = jsonDecode(response.body);
 
-      }
-    });
+    if (jsonData['status'] == "ok") {
+      jsonData['articles'].forEach((item) {
+        if (item['urlToImage'] != null && item['description'] != null) {
+          var mainNewsModel = MainNewsModel(
+              title: item['title'],
+              description: item['description'],
+              url: item['url'],
+              urlToImage: item['urlToImage'],
+              author: item['author']);
+
+          mainnewslist.add(mainNewsModel);
+        }
+      });
+    }
   }
-}
 }
