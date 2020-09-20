@@ -35,7 +35,7 @@ class Search extends SearchDelegate{
   Widget buildSuggestions(BuildContext context) {
 
     final suggestionList = query.isEmpty? conutryList
-    : conutryList.where((element) => element['country'].toString().startsWith(query)).toList();
+    : conutryList.where((element) => element['country'].toString().toLowerCase().startsWith(query)).toList();
 
     return ListView.builder(
       itemCount: suggestionList.length,

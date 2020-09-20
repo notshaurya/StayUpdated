@@ -56,11 +56,13 @@ class _SciencepageState extends State<Sciencepage> {
                 itemCount: mainnews.length,
                 itemBuilder: (context, index) {
                   return MainNewsCard(
-                      title: mainnews[index].title,
-                      desc: mainnews[index].description,
-                      url: mainnews[index].url,
-                      imageUrl: mainnews[index].urlToImage,
-                      author: mainnews[index].author);
+                    title: mainnews[index].title,
+                    desc: mainnews[index].description,
+                    url: mainnews[index].url,
+                    imageUrl: mainnews[index].urlToImage,
+                    author: mainnews[index].author,
+                    dateTime: mainnews[index].dateTime,
+                  );
                 },
               ),
             ),
@@ -85,8 +87,14 @@ class _SciencepageState extends State<Sciencepage> {
 }
 
 class MainNewsCard extends StatelessWidget {
-  final String title, desc, url, imageUrl, author;
-  MainNewsCard({this.desc, this.imageUrl, this.title, this.url, this.author});
+  final String title, desc, url, imageUrl, author, dateTime;
+  MainNewsCard(
+      {this.desc,
+      this.imageUrl,
+      this.title,
+      this.url,
+      this.author,
+      this.dateTime});
 
   @override
   Widget build(BuildContext context) {
@@ -118,18 +126,29 @@ class MainNewsCard extends StatelessWidget {
                           fontSize: 18,
                           color: Colors.black)),
                   SizedBox(height: 7),
+                  Text(desc,
+                      style: TextStyle(fontSize: 15, color: Colors.black)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Flexible(
-                        child: Text(desc,
-                            style:
-                                TextStyle(fontSize: 15, color: Colors.black)),
+                        child: Text(author,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.green)),
                       ),
+                      Text(dateTime,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.green)),
                       IconButton(
+                        iconSize: 25,
+                        color: Colors.green,
                         icon: Icon(FontAwesomeIcons.shareAlt),
                         onPressed: () {
-                          Share.share(title);
+                          Share.share(title + ' ' + url);
                         },
                       )
                     ],
@@ -150,9 +169,15 @@ class MainNewsModel {
   String url;
   String urlToImage;
   String author;
+  String dateTime;
 
   MainNewsModel(
-      {this.title, this.description, this.url, this.urlToImage, this.author});
+      {this.title,
+      this.description,
+      this.url,
+      this.urlToImage,
+      this.author,
+      this.dateTime});
 }
 
 class MainNews {
@@ -160,7 +185,7 @@ class MainNews {
 
   Future<void> mainNews() async {
     String url =
-        "https://newsapi.org/v2/top-headlines?country=in&category=science&apiKey=3d0174f321ba406daf5daa0f48d5c724";
+        "https://newsapi.org/v2/top-headlines?country=in&pageSize=100&category=science&apiKey=3d0174f321ba406daf5daa0f48d5c724";
 
     var response = await http.get(url);
 
@@ -168,14 +193,21 @@ class MainNews {
 
     if (jsonData['status'] == "ok") {
       jsonData['articles'].forEach((item) {
-        if (item['urlToImage'] != null && item['description'] != null) {
+        if (item['urlToImage'] != null &&
+            item['description'] != null &&
+            item['source']['name'] != null &&
+            item['publishedAt'] != null) {
+          var shortTitle = item['title'].split(' - ');
+          var date = item['publishedAt'].split('T');
+          var splitDate = date[0].split('-');
           var mainNewsModel = MainNewsModel(
-              title: item['title'],
+              title: shortTitle[0],
               description: item['description'],
               url: item['url'],
               urlToImage: item['urlToImage'],
-              author: item['author']);
-
+              author: item['source']['name'],
+              dateTime:
+                  splitDate[2] + ' - ' + splitDate[1] + ' - ' + splitDate[0]);
           mainnewslist.add(mainNewsModel);
         }
       });

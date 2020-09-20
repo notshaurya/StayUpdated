@@ -66,7 +66,8 @@ class _HomepageState extends State<Homepage> {
                       desc: mainnews[index].description,
                       url: mainnews[index].url,
                       imageUrl: mainnews[index].urlToImage,
-                      author: mainnews[index].author);
+                      author: mainnews[index].author,
+                      dateTime: mainnews[index].dateTime);
                 },
               ),
             ),
@@ -96,8 +97,14 @@ class _HomepageState extends State<Homepage> {
 }
 
 class MainNewsCard extends StatelessWidget {
-  final String title, desc, url, imageUrl, author;
-  MainNewsCard({this.desc, this.imageUrl, this.title, this.url, this.author});
+  final String title, desc, url, imageUrl, author, dateTime;
+  MainNewsCard(
+      {this.desc,
+      this.imageUrl,
+      this.title,
+      this.url,
+      this.author,
+      this.dateTime});
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +116,7 @@ class MainNewsCard extends StatelessWidget {
       },
       child: Center(
         child: Card(
-          elevation: 2,
+          elevation: 8,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(100),
           ),
@@ -129,18 +136,29 @@ class MainNewsCard extends StatelessWidget {
                           fontSize: 18,
                           color: Colors.black)),
                   SizedBox(height: 7),
+                  Text(desc,
+                      style: TextStyle(fontSize: 15, color: Colors.black)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Flexible(
-                        child: Text(desc,
-                            style:
-                                TextStyle(fontSize: 15, color: Colors.black)),
+                        child: Text(author,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.green)),
                       ),
+                      Text(dateTime,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.green)),
                       IconButton(
+                        iconSize: 25,
+                        color: Colors.green,
                         icon: Icon(FontAwesomeIcons.shareAlt),
                         onPressed: () {
-                          Share.share(title);
+                          Share.share(title + ' ' + url);
                         },
                       )
                     ],
