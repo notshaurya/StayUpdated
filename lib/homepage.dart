@@ -108,63 +108,82 @@ class MainNewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => Webview(url: url)));
-        //launch(url);
-      },
-      child: Center(
-        child: Card(
-          elevation: 8,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(100),
-          ),
-          child: Container(
-            color: Colors.white,
-            padding: EdgeInsets.all(7),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  ClipRRect(
+    return Center(
+      child: Card(
+        elevation: 8,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(100),
+        ),
+        child: Container(
+          color: Colors.white,
+          padding: EdgeInsets.all(15),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Webview(url: url)));
+                    //launch(url);
+                  },
+                  child: ClipRRect(
                       borderRadius: BorderRadius.circular(15),
                       child: CachedNetworkImage(imageUrl: imageUrl)),
-                  SizedBox(height: 10),
-                  Text(title,
+                ),
+                SizedBox(height: 10),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Webview(url: url)));
+                    //launch(url);
+                  },
+                  child: Text(title,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
                           color: Colors.black)),
-                  SizedBox(height: 7),
-                  Text(desc,
-                      style: TextStyle(fontSize: 15, color: Colors.black)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Flexible(
-                        child: Text(author,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Colors.green)),
-                      ),
-                      Text(dateTime,
+                ),
+                SizedBox(height: 7),
+                GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Webview(url: url)));
+                      //launch(url);
+                    },
+                    child: Text(desc,
+                        style: TextStyle(fontSize: 15, color: Colors.black))),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      child: Text(author,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
                               color: Colors.green)),
-                      IconButton(
-                        iconSize: 25,
-                        color: Colors.green,
-                        icon: Icon(FontAwesomeIcons.shareAlt),
-                        onPressed: () {
-                          Share.share(title + ' ' + url);
-                        },
-                      )
-                    ],
-                  ),
-                ]),
-          ),
+                    ),
+                    Text(dateTime,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.green)),
+                    IconButton(
+                      iconSize: 25,
+                      color: Colors.green,
+                      icon: Icon(FontAwesomeIcons.shareAlt),
+                      onPressed: () {
+                        Share.share(title + ' ' + url);
+                      },
+                    )
+                  ],
+                ),
+              ]),
         ),
       ),
     );

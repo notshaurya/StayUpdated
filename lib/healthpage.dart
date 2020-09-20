@@ -116,18 +116,45 @@ class MainNewsCard extends StatelessWidget {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: CachedNetworkImage(imageUrl: imageUrl)),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Webview(url: url)));
+                      //launch(url);
+                    },
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: CachedNetworkImage(imageUrl: imageUrl)),
+                  ),
                   SizedBox(height: 10),
-                  Text(title,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Colors.black)),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Webview(url: url)));
+                      //launch(url);
+                    },
+                    child: Text(title,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.black)),
+                  ),
                   SizedBox(height: 7),
-                  Text(desc,
-                      style: TextStyle(fontSize: 15, color: Colors.black)),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Webview(url: url)));
+                      //launch(url);
+                    },
+                    child: Text(desc,
+                        style: TextStyle(fontSize: 15, color: Colors.black)),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
