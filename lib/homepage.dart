@@ -7,6 +7,7 @@ import 'package:new_app/covidpage.dart';
 import 'package:new_app/drawer.dart';
 import 'package:new_app/webview.dart';
 import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Homepage extends StatefulWidget {
   @override
@@ -165,20 +166,35 @@ class MainNewsCard extends StatelessWidget {
                       child: Text(author,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                              fontSize: 16,
                               color: Colors.green)),
                     ),
                     Text(dateTime,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                            fontSize: 16,
                             color: Colors.green)),
                     IconButton(
-                      iconSize: 25,
+                      iconSize: 22,
+                      color: Colors.green,
+                      icon: Icon(FontAwesomeIcons.globe),
+                      onPressed: () {
+                        launch(url);
+                      },
+                    ),
+                    IconButton(
+                      iconSize: 22,
                       color: Colors.green,
                       icon: Icon(FontAwesomeIcons.shareAlt),
                       onPressed: () {
-                        Share.share(title + ' ' + url);
+                        Share.share(title +
+                            '\n\n' +
+                            url +
+                            '\n\nSource: ' +
+                            author +
+                            ' via Stay Updated\n\n' +
+                            'Download now:\n\n' +
+                            url);
                       },
                     )
                   ],

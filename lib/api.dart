@@ -44,7 +44,7 @@ class MainNews {
               url: item['url'],
               urlToImage: item['urlToImage'],
               author: item['source']['name'],
-              dateTime: splitDate[2] +' - '+ splitDate[1] + ' - ' + splitDate[0]);
+              dateTime: splitDate[2] +'/'+ splitDate[1] + '/' + splitDate[0]);
           mainnewslist.add(mainNewsModel);
         }
       });

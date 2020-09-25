@@ -8,6 +8,8 @@ import 'package:new_app/sportspage.dart';
 import 'package:new_app/sciencepage.dart';
 import 'package:new_app/technologypage.dart';
 import 'package:new_app/homepage.dart';
+import 'package:new_app/webview.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SideDrawer extends StatelessWidget {
   @override
@@ -171,6 +173,26 @@ class SideDrawer extends StatelessWidget {
                   builder: (context) => Technologypage(),
                 ),
               );
+            },
+          ),
+          Divider(
+            color: Colors.green,
+            height: 10,
+            thickness: 1,
+          ),
+          ListTile(
+            leading: Icon(
+              FontAwesomeIcons.userGraduate,
+              color: Colors.green,
+            ),
+            title: Text(
+              'About the developer',
+              style: TextStyle(
+                fontSize: 17,
+              ),
+            ),
+            onTap: () {
+              launch('https://shauryasuman.netlify.app');
             },
           ),
         ],

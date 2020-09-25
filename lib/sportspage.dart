@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-//import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:new_app/webview.dart';
 import 'package:new_app/drawer.dart';
@@ -162,20 +162,35 @@ class MainNewsCard extends StatelessWidget {
                         child: Text(author,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 18,
+                                fontSize: 16,
                                 color: Colors.green)),
                       ),
                       Text(dateTime,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                              fontSize: 16,
                               color: Colors.green)),
                       IconButton(
-                        iconSize: 25,
+                        iconSize: 22,
+                        color: Colors.green,
+                        icon: Icon(FontAwesomeIcons.globe),
+                        onPressed: () {
+                          launch(url);
+                        },
+                      ),
+                      IconButton(
+                        iconSize: 22,
                         color: Colors.green,
                         icon: Icon(FontAwesomeIcons.shareAlt),
                         onPressed: () {
-                          Share.share(title + ' ' + url);
+                          Share.share(title +
+                              '\n\n' +
+                              url +
+                              '\n\nSource: ' +
+                              author +
+                              ' via Stay Updated\n\n' +
+                              'Download now:\n\n' +
+                              url);
                         },
                       )
                     ],
@@ -233,8 +248,7 @@ class MainNews {
               url: item['url'],
               urlToImage: item['urlToImage'],
               author: item['source']['name'],
-              dateTime:
-                  splitDate[2] + ' - ' + splitDate[1] + ' - ' + splitDate[0]);
+              dateTime: splitDate[2] + '/' + splitDate[1] + '/' + splitDate[0]);
 
           mainnewslist.add(mainNewsModel);
         }
