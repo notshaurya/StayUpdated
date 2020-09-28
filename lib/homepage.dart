@@ -58,6 +58,7 @@ class _HomepageState extends State<Homepage> {
           ? Center(child: CircularProgressIndicator())
           : Container(
               color: Colors.white,
+              padding: EdgeInsets.all(5),
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: mainnews.length,
@@ -111,13 +112,13 @@ class MainNewsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Card(
-        elevation: 8,
+        elevation: 2,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100),
         ),
         child: Container(
           color: Colors.white,
-          padding: EdgeInsets.all(15),
+          padding: EdgeInsets.all(7),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
