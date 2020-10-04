@@ -184,7 +184,7 @@ class MainNewsCard extends StatelessWidget {
                         icon: Icon(FontAwesomeIcons.shareAlt),
                         onPressed: () {
                           Share.share(title +
-                              '\n' +
+                              '\n\n' +
                               url +
                               '\nSource: ' +
                               author +
