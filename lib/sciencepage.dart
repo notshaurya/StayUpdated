@@ -184,13 +184,13 @@ class MainNewsCard extends StatelessWidget {
                         icon: Icon(FontAwesomeIcons.shareAlt),
                         onPressed: () {
                           Share.share(title +
-                              '\n\n' +
+                              '\n' +
                               url +
-                              '\n\nSource: ' +
+                              '\nSource: ' +
                               author +
                               ' via Stay Updated\n\n' +
-                              'Download now:\n\n' +
-                              url);
+                              'Download now:\n' +
+                              'https://play.google.com/store/apps/details?id=com.news.stayUpdated');
                         },
                       )
                     ],
