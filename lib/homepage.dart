@@ -89,7 +89,7 @@ class _HomepageState extends State<Homepage> {
           "  COVID STATS",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.indigo,
       ),
       drawer: Drawer(
         child: SideDrawer(),
@@ -114,7 +114,7 @@ class MainNewsCard extends StatelessWidget {
       child: Card(
         elevation: 2,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(100),
+          borderRadius: BorderRadius.circular(50),
         ),
         child: Container(
           color: Colors.white,
@@ -168,16 +168,16 @@ class MainNewsCard extends StatelessWidget {
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
-                              color: Colors.green)),
+                              color: Colors.indigo)),
                     ),
                     Text(dateTime,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
-                            color: Colors.green)),
+                            color: Colors.indigo)),
                     IconButton(
                       iconSize: 22,
-                      color: Colors.green,
+                      color: Colors.indigo,
                       icon: Icon(FontAwesomeIcons.globe),
                       onPressed: () {
                         launch(url);
@@ -185,7 +185,7 @@ class MainNewsCard extends StatelessWidget {
                     ),
                     IconButton(
                       iconSize: 22,
-                      color: Colors.green,
+                      color: Colors.indigo,
                       icon: Icon(FontAwesomeIcons.shareAlt),
                       onPressed: () {
                        Share.share(title +

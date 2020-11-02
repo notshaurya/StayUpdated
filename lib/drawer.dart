@@ -20,7 +20,7 @@ class SideDrawer extends StatelessWidget {
         children: <Widget>[
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.green,
+              color: Colors.indigo,
             ),
             child: Center(
               child: Column(
@@ -38,7 +38,7 @@ class SideDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               FontAwesomeIcons.newspaper,
-              color: Colors.green,
+              color: Colors.indigo[400],
             ),
             title: Text(
               'Top Headlines',
@@ -58,7 +58,7 @@ class SideDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               FontAwesomeIcons.businessTime,
-              color: Colors.green,
+              color: Colors.indigo[400],
             ),
             title: Text(
               'Business',
@@ -78,7 +78,7 @@ class SideDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               FontAwesomeIcons.video,
-              color: Colors.green,
+              color: Colors.indigo[400],
             ),
             title: Text(
               'Entertainment',
@@ -98,7 +98,7 @@ class SideDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               FontAwesomeIcons.clinicMedical,
-              color: Colors.green,
+              color: Colors.indigo[400],
             ),
             title: Text(
               'Health',
@@ -118,7 +118,7 @@ class SideDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               FontAwesomeIcons.microscope,
-              color: Colors.green,
+              color: Colors.indigo[400],
             ),
             title: Text(
               'Science',
@@ -138,7 +138,7 @@ class SideDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               FontAwesomeIcons.running,
-              color: Colors.green,
+              color: Colors.indigo[400],
             ),
             title: Text(
               'Sports',
@@ -158,7 +158,7 @@ class SideDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               FontAwesomeIcons.networkWired,
-              color: Colors.green,
+              color: Colors.indigo[400],
             ),
             title: Text(
               'Technology',
@@ -176,14 +176,14 @@ class SideDrawer extends StatelessWidget {
             },
           ),
           Divider(
-            color: Colors.green,
+            color: Colors.indigo[400],
             height: 10,
             thickness: 1,
           ),
           ListTile(
             leading: Icon(
               FontAwesomeIcons.userGraduate,
-              color: Colors.green,
+              color: Colors.indigo[400],
             ),
             title: Text(
               'About the developer',

@@ -55,7 +55,7 @@ class _CovidPageState extends State<CovidPage> {
           icon: Icon(FontAwesomeIcons.search),
           label: Text(" SEARCH",  style: TextStyle(fontWeight: FontWeight.bold),),
         
-      backgroundColor: Colors.green,
+      backgroundColor: Colors.indigo,
     ),
       appBar: AppBar(
         title: Text("COVID - 19 TRACKER",style: TextStyle(fontFamily: 'ChelseaMarket'),),
